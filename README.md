@@ -1,4 +1,5 @@
 # learning-opengl
 https://learnopengl-cn.github.io/
 
-## 计算机视觉的yi'ci'chang'shi
+## what's this
+计算机图形学的一次尝试
