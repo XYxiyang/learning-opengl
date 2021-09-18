@@ -1,11 +1,15 @@
-#include<glad/glad.h>
-#include<GLFW/glfw3.h>
+#include<D:\vcpkg\vcpkg\installed\x86-windows\include\glad\glad.h>
+#include<D:\vcpkg\vcpkg\installed\x86-windows\include\GLFW\glfw3.h>
 #include<iostream>
 #include"shader.h"
+#include<D:\vcpkg\vcpkg\installed\x86-windows\include\glm\glm.hpp>
+#include<D:\vcpkg\vcpkg\installed\x86-windows\include\glm/gtc/matrix_transform.hpp>
+#include<D:\vcpkg\vcpkg\installed\x86-windows\include\glm/gtc/type_ptr.hpp>
 #define STB_IMAGE_IMPLEMENTATION
 #include "stb_image.h"
 
 using namespace std;
+using namespace glm;
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height) {
 	glViewport(0, 0, width, height);
@@ -47,10 +51,10 @@ int main()
 
 
 	float vertices[] = {
-	 0.5f,  0.5f, 0.0f,   1.0f, 0.0f, 0.0f,   1.0f, 1.0f,
-	 0.5f, -0.5f, 0.0f,   0.0f, 1.0f, 0.0f,   1.0f, 0.0f,
-	-0.5f, -0.5f, 0.0f,   0.0f, 0.0f, 1.0f,   0.0f, 0.0f,
-	-0.5f,  0.5f, 0.0f,   1.0f, 1.0f, 0.0f,   0.0f, 1.0f
+	 0.5f,  0.5f, 0.0f,   1.0f, 1.0f,
+	 0.5f, -0.5f, 0.0f,   1.0f, 0.0f,
+	-0.5f, -0.5f, 0.0f,   0.0f, 0.0f,
+	-0.5f,  0.5f, 0.0f,   0.0f, 1.0f
 	};
 
 	unsigned int indices[] = {
@@ -75,13 +79,10 @@ int main()
 	glBindBuffer(GL_ARRAY_BUFFER, VBO);
 	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
 
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)0);
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)0);
 	glEnableVertexAttribArray(0);
-	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(3 * sizeof(float)));
+	glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)(3 * sizeof(float)));
 	glEnableVertexAttribArray(1);
-	glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(6 * sizeof(float)));
-
-	glEnableVertexAttribArray(2);
 	//顶点输入到内存当中
 
 
@@ -135,6 +136,11 @@ int main()
 	shader.setInt("texture2", 1);
 
 	while (!glfwWindowShouldClose(window)) {
+		mat4 trans = mat4(1);
+		trans = glm::translate(trans, glm::vec3(0.5f, -0.5f, 0.0f));
+		trans = glm::rotate(trans, (float)glfwGetTime(), glm::vec3(0.0f, 0.0f, 1.0f));
+		unsigned int transformLoc = glGetUniformLocation(shader.ID, "transform");
+		glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(trans));
 		shader.use();
 
 		processInput(window);
