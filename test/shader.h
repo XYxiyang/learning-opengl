@@ -1,8 +1,8 @@
 ﻿#pragma once
 #include<glad/glad.h>
-#include<D:\vcpkg\vcpkg\installed\x86-windows\include\glm\glm.hpp>
-#include<D:\vcpkg\vcpkg\installed\x86-windows\include\glm/gtc/matrix_transform.hpp>
-#include<D:\vcpkg\vcpkg\installed\x86-windows\include\glm/gtc/type_ptr.hpp>
+#include<glm/glm.hpp>
+#include<glm/gtc/matrix_transform.hpp>
+#include<glm/gtc/type_ptr.hpp>
 #include<cstring>
 #include<iostream>
 #include<fstream>
@@ -19,7 +19,7 @@ public:
 	void setInt(const string& name, int value)const;
 	void setFloat(const string& name, float value)const;
 	void setVec2(const string& name, const vec2& value) const;
-	void setVec2(const string& name, float x, float y)const ;
+	void setVec2(const string& name, float x, float y)const;
 	void setVec3(const string& name, const vec3& value)const;
 	void setVec3(const string& name, float x, float y, float z)const;
 	void setVec4(const string& name, const vec4& value) const;
@@ -110,7 +110,7 @@ void Shader::setVec2(const string& name, const vec2& value) const {
 	glUniform2fv(glGetUniformLocation(ID, name.c_str()), 1, &value[0]);
 }
 
-void Shader::setVec2(const  string& name, float x, float y)const{
+void Shader::setVec2(const  string& name, float x, float y)const {
 	glUniform2f(glGetUniformLocation(ID, name.c_str()), x, y);
 }
 // ------------------------------------------------------------------------
@@ -128,7 +128,7 @@ void Shader::setVec4(const string& name, const vec4& value) const
 	glUniform4fv(glGetUniformLocation(ID, name.c_str()), 1, &value[0]);
 }
 
-void Shader::setVec4(const string& name, float x, float y, float z, float w)const{
+void Shader::setVec4(const string& name, float x, float y, float z, float w)const {
 	glUniform4f(glGetUniformLocation(ID, name.c_str()), x, y, z, w);
 }
 // ------------------------------------------------------------------------

@@ -1,10 +1,10 @@
-#include<D:\vcpkg\vcpkg\installed\x86-windows\include\glad\glad.h>
-#include<D:\vcpkg\vcpkg\installed\x86-windows\include\GLFW\glfw3.h>
+#include<glad/glad.h>
+#include<GLFW/glfw3.h>
 #include<iostream>
 #include"shader.h"
-#include<D:\vcpkg\vcpkg\installed\x86-windows\include\glm\glm.hpp>
-#include<D:\vcpkg\vcpkg\installed\x86-windows\include\glm/gtc/matrix_transform.hpp>
-#include<D:\vcpkg\vcpkg\installed\x86-windows\include\glm/gtc/type_ptr.hpp>
+#include<glm/glm.hpp>
+#include<glm/gtc/matrix_transform.hpp>
+#include<glm/gtc/type_ptr.hpp>
 #define STB_IMAGE_IMPLEMENTATION
 #include "stb_image.h"
 #include "camera.h"
