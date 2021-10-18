@@ -167,13 +167,13 @@ int main()
 	glEnableVertexAttribArray(0);
 	glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)(3 * sizeof(float)));
 	glEnableVertexAttribArray(1);
-	//¶¥µãÊäÈëµ½ÄÚ´æµ±ÖÐ
+	//�������뵽�ڴ浱��
 
 
 
 	int width1, height1, nrChannels1;
 	//stbi_set_flip_vertically_on_load(true);
-	unsigned char* data1 = stbi_load("frame.png", &width1, &height1, &nrChannels1, 0);
+	unsigned char* data1 = stbi_load("./pics/frame.png", &width1, &height1, &nrChannels1, 0);
 	if (!data1) {
 		printf("failed to generate photo data\n");
 		return -1;
@@ -195,7 +195,7 @@ int main()
 
 	int width2, height2, nrChannels2;
 	//stbi_set_flip_vertically_on_load(true);
-	unsigned char* data2 = stbi_load("me.png", &width2, &height2, &nrChannels2, 0);
+	unsigned char* data2 = stbi_load("./pics/me.png", &width2, &height2, &nrChannels2, 0);
 	if (!data2) {
 		printf("failed to generate photo data\n");
 		return -1;
