@@ -167,7 +167,7 @@ int main()
 	glEnableVertexAttribArray(0);
 	glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)(3 * sizeof(float)));
 	glEnableVertexAttribArray(1);
-	//顶点输入到内存当中
+	//露楼碌茫脢盲脠毛碌陆脛脷麓忙碌卤脰脨
 
 
 
