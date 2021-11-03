@@ -12,13 +12,14 @@
 using namespace std;
 using namespace glm;
 
-
+#define WIDTH 1600
+#define HEIGHT 1200
 float deltaTime = 0.0f;	// time between current frame and last frame
 float lastFrame = 0.0f;
 
 Camera camera(glm::vec3(0.0f, 0.0f, 3.0f));
-float lastX = 777 / 2.0f;
-float lastY = 841 / 2.0f;
+float lastX = WIDTH / 2.0f;
+float lastY = HEIGHT / 2.0f;
 bool firstMouse = true;
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height) {
@@ -73,7 +74,7 @@ int main()
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 	//glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
 
-	GLFWwindow* window = glfwCreateWindow(777, 841, "LearnOpenGL", NULL, NULL);
+	GLFWwindow* window = glfwCreateWindow(WIDTH, HEIGHT, "LearnOpenGL", NULL, NULL);
 	if (window == NULL) {
 		cout << "failed" << endl;
 
@@ -250,7 +251,7 @@ int main()
 		glActiveTexture(GL_TEXTURE1);
 		glBindTexture(GL_TEXTURE_2D, texture2);
 
-		glm::mat4 projection = glm::perspective(glm::radians(camera.Zoom), (float)777 / (float)841, 0.1f, 100.0f);
+		glm::mat4 projection = glm::perspective(glm::radians(camera.Zoom), (float)WIDTH / (float)HEIGHT, 0.1f, 100.0f);
 		shader.setMat4("projection", projection);
 
 		float radius = 10.0f;
